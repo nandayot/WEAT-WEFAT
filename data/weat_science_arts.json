@@ -1,0 +1,6 @@
+{
+    "target_1": ["ciência", "tecnologia", "física", "química", "einstein", "nasa", "experiência", "astronomia"],
+    "target_2": ["poesia", "arte", "shakespeare", "dança", "literatura", "romance", "sinfonia", "drama"],
+    "attribute_1": ["masculino", "homem", "menino", "irmão", "ele", "dele", "deles", "filho"],
+    "attribute_2": ["feminino", "mulher", "menina", "irmã", "ela", "dela", "delas", "filha"]
+}

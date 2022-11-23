@@ -1,0 +1,8 @@
+{
+    "target_1": ["aster", "trevo", "jacinto", "calêndula", "papoula", "azaléia", "açafrão", "íris", "orquídea", "rosa", "dália", "narciso", "lilás", "amor-perfeito", "tulipa", "botão-de-ouro", "margarida", "lírio", "peônia", "violeta", "cravo", "girassol", "magnólia", "petúnia", "zínia"],
+    "target_2": ["formiga", "lagarta", "pulga", "gafanhoto", "aranha", "percevejo", "centopéia", "mosca", "larva", "tarântula", "abelha", "barata", "pernilongo", "mosquito", "cupim", "besouro", "grilo", "zangão", "mariposa", "vespa", "louva-deus", "libélula", "mutuca", "barata", "gorgulho"],
+    "attribute_1": ["carícia", "liberdade", "saúde", "amor", "paz", "animar", "amigo", "céu", "leal", "prazer", "diamante", "gentil", "honesto", "sorte", "arco-íris", "diploma", "presente", "honra", "milagre", "nascer-do-sol", "família",
+    "feliz", "risos", "paraíso", "férias"],
+    "attribute_2": ["abuso", "acidente", "sujeira", "assassinato", "doença", "acidente", "morte", "luto", "veneno", "fedor", "assalto", "desastre", "ódio", "poluir", "tragédia", "divórcio", "prisão", "pobreza", "feio", "câncer", "matar", "podre",
+    "vômito", "agonia", "prisão"]
+}

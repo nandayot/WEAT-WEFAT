@@ -14,18 +14,28 @@ class WEFAT(WordEmbeddingTest):
     # Return all calculated effect sizes
     def all_effect_sizes(self):
         effect_sizes = {}
-        for w in self.W:
-            effect_size = self.effect_size(self.W[w])
-            effect_sizes[w] = effect_size
+
+        for f, m in self.W:
+
+            for w, p in zip(f, m):
+                effect_size = self.effect_size(f[w], m[p])
+                effect_sizes[w] = effect_size
+
         return effect_sizes
 
     # Calculate s(w, A, B)
-    def effect_size(self, w):
-        a_cos = np.array([self._cos(w, a) for a in self.A])
-        b_cos = np.array([self._cos(w, b) for b in self.B])
-
+    def effect_size(self, f, m):
+        a_cos = []
+        b_cos = []
+        for a, b in zip(self.A, self.B) :
+            for n1, n2 in zip(a, b):
+                a_cos.append(self._cos(f, a[n1]))
+                b_cos.append(self._cos(m, b[n2]))
+        a_cos = np.array(a_cos)
+        b_cos = np.array(b_cos)
         return (np.mean(a_cos) - np.mean(b_cos)) / np.std(np.concatenate((a_cos, b_cos)))
 
+    # AS FUNÇÕES ABAIXO NÃO FORAM REPLICADAS. NESTE CASO FAZ-SE NECESSÁRIO INFORMAR O ARQUIVO WEFAT DAS ESTATÍSTICAS DO MUNDO REAL
     # Return all calculated p_values
     def all_p_values(self, iterations, distribution_type):
         p_values = {}

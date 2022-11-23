@@ -14,15 +14,15 @@ class WEAT(WordEmbeddingTest):
 
     # Calculate effect size
     def effect_size(self):
-        x_s = np.array([self.s(x) for x in self.X])
-        y_s = np.array([self.s(y) for y in self.Y])
+        x_s = np.array([self.s(self.X[0][x]) for x in self.X[0]])
+        y_s = np.array([self.s(self.Y[0][y]) for y in self.Y[0]])
 
         return (np.mean(x_s) - np.mean(y_s)) / np.std(np.concatenate((x_s, y_s)))
 
     # Calculate s(w, A, B)
     def s(self, w):
-        a_cos = np.array([self._cos(w, a) for a in self.A])
-        b_cos = np.array([self._cos(w, b) for b in self.B])
+        a_cos = np.array([self._cos(w, self.A[0][a]) for a in self.A[0]])
+        b_cos = np.array([self._cos(w, self.B[0][b]) for b in self.B[0]])
 
         return (np.mean(a_cos) - np.mean(b_cos))
 
@@ -48,14 +48,18 @@ class WEAT(WordEmbeddingTest):
 
     # Get test_statistic
     def _get_test_statistic(self):
-        x_s = np.array([self.s(x) for x in self.X])
-        y_s = np.array([self.s(y) for y in self.Y])
+        x_s = np.array([self.s(self.X[0][x]) for x in self.X[0]])
+        y_s = np.array([self.s(self.Y[0][y]) for y in self.Y[0]])
 
         return np.mean(x_s) - np.mean(y_s)
 
     # Get null distribution
     def _null_distribution(self, iterations):
-        XY = np.concatenate((self.X, self.Y))
+        Xx = [self.X[0][x] for x in self.X[0]]
+        Yy = [self.Y[0][y] for y in self.Y[0]]
+
+        XY = np.concatenate((Xx, Yy))
+        
         set_size = int(len(XY) / 2)
         distribution = np.zeros(iterations)
 

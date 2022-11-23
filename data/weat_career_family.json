@@ -1,0 +1,6 @@
+{
+    "target_1": ["executivo", "gestão", "profissional", "corporação", "salário", "escritório", "negócios", "carreira"],
+    "target_2": ["casa", "pais", "filhos", "família", "primos", "casamento", "matrimônio", "parentes"],
+    "attribute_1": ["masculino", "homem", "menino", "irmão", "ele", "dele", "deles", "filho"],
+    "attribute_2": ["feminino", "mulher", "menina", "irmã", "ela", "dela", "delas", "filha"]
+}

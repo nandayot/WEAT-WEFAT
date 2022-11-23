@@ -1,0 +1,6 @@
+{
+    "target_1": ["matemática", "álgebra", "geometria", "cálculo", "equações", "computação", "números", "adição"],
+    "target_2": ["poesia", "arte", "dança", "literatura", "romance", "sinfonia", "drama", "escultura"],
+    "attribute_1": ["masculino", "homem", "menino", "irmão", "ele", "dele", "deles", "filho"],
+    "attribute_2": ["feminino", "mulher", "menina", "irmã", "ela", "dela", "delas", "filha"]
+}

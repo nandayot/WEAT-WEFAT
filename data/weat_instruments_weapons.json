@@ -1,0 +1,10 @@
+{
+    "target_1": ["gaita-de-foles", "violoncelo", "guitarra", "alaúde", "trombone", "banjo", "clarinete", "gaita", "bandolim", "trompete", "fagote", "bateria", "harpa", "oboé", "tuba", "sino", "violino", "cravo", "piano", "viola", "bongo",
+    "flauta", "trompa", "saxofone", "tambor"],
+    "target_2": ["flecha", "clube", "arma", "míssil", "lança", "machado", "punhal", "arpão", "pistola", "espada", "lâmina", "dinamite", "machado", "rifle", "tanque", "bomba", "arma", "faca", "espingarda", "lacrimogêneo", "canhão", "granada",
+    "maça", "estilingue", "chicote"],
+    "attribute_1": ["carícia", "liberdade", "saúde", "amor", "paz", "animar", "amigo", "céu", "leal", "prazer", "diamante", "gentil", "honesto", "sorte", "arco-íris", "diploma", "presente", "honra", "milagre", "nascer-do-sol", "família",
+    "feliz", "risos", "paraíso", "férias"],
+    "attribute_2": ["abuso", "acidente", "sujeira", "assassinato", "doença", "acidente", "morte", "luto", "veneno", "fedor", "assalto", "desastre", "ódio", "poluir", "tragédia", "divórcio", "prisão", "pobreza", "feio", "câncer", "matar", "podre",
+    "vômito", "agonia", "prisão"]
+}

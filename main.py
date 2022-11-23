@@ -28,7 +28,7 @@ def main(args):
 
 # Load data file with target and attribute words
 def load_targets_and_attributes(file_name):
-    with open(file_name, 'r') as file:
+    with open(file_name, 'r', encoding='utf8') as file:
         data = json.load(file)
 
     return data
@@ -52,14 +52,25 @@ def get_embeddings(glove_file_name):
 def embed_data(data, embeddings_dict, embedded_data_file_name):
     embedded_data = {}
     for label in data:
-        words = data[label]
+        pairs = data[label]
         embedded_data[label] = []
-        for i in words:
-            embedded_vector = embeddings_dict.get(i)
-            if embedded_vector is None:
-                print(f'Embedding not found for "{i}"; skipped')
-            else:
-                embedded_data[label].append(embedded_vector)
+        if label == 'target':
+            for i, j in pairs:
+                embedded_vector_i = embeddings_dict.get(i)
+                embedded_vector_j = embeddings_dict.get(j)
+                if embedded_vector_i is None:
+                    print(f'Embedding not found for "{i}"; skipped')
+                if embedded_vector_j is None:
+                    print(f'Embedding not found for "{j}"; skipped')
+                else:
+                    embedded_data[label].append((embedded_vector_j, embedded_vector_i))
+        else:
+            for i in pairs:
+                embedded_vector = embeddings_dict.get(i)
+                if embedded_vector is None:
+                    print(f'Embedding not found for "{i}"; skipped')
+                else:
+                    embedded_data[label].append(embedded_vector)
 
     with open(embedded_data_file_name, 'w') as results:
         json.dump(embedded_data, results)
@@ -72,25 +83,38 @@ def load_embedded_data(embedded_data_file_name):
 
     embeddings = {}
     for label in data:
-        embeddings[label] = {embedding.split()[0]: np.asarray(embedding.split()[1:], dtype='float32') for embedding in data[label]}
-
+        embeddings[label] = []
+        if label == 'target':
+            for embedding, embedding2 in data[label]:
+                embeddings[label].append([
+                    {
+                        embedding.split()[0]:np.asarray(embedding.split()[1:], dtype='float32')
+                    },
+                    {
+                        embedding2.split()[0]:np.asarray(embedding2.split()[1:], dtype='float32')
+                    }
+                ])
+                # embeddings[label].append({embedding2.split()[0]:np.asarray(embedding2.split()[1:], dtype='float32')})
+        else:
+            embeddings[label] = [{embedding.split()[0]: np.asarray(embedding.split()[1:], dtype='float32') for embedding in data[label]}]
+            # print(embeddings[label])
+    # quit()
     return embeddings
 
 
 # Run WEAT technique and report effect size and p-value
 def test_weat(embedded_data, iterations, distribution_type):
-    test = WEAT(list(embedded_data['target_1'].values()), list(embedded_data['target_2'].values()), list(embedded_data['attribute_1'].values()), list(embedded_data['attribute_2'].values()))
+    test = WEAT(embedded_data['target_1'], embedded_data['target_2'], embedded_data['attribute_1'], embedded_data['attribute_2'])
 
     d = test.effect_size()
     print(f'\teffect size: {d}')
-
     p_value = test.p_value(iterations, distribution_type)
     print(f'\tp_value: {p_value}')
 
 
 # Run WEFAT technique and show either plot and Pearson correlation coefficient or effect sizes and p-values
 def test_wefat(embedded_data, wefat_association_file_name, iterations, distribution_type):
-    test = WEFAT(embedded_data['target'], list(embedded_data['attribute_1'].values()), list(embedded_data['attribute_2'].values()))
+    test = WEFAT(embedded_data['target'], embedded_data['attribute_1'], embedded_data['attribute_2'])
     s = test.all_effect_sizes()
 
     if wefat_association_file_name is not None:
@@ -102,8 +126,15 @@ def test_wefat(embedded_data, wefat_association_file_name, iterations, distribut
                 if association in s.keys():
                     pairs.append((association_data[association], s[association]))
 
-            plt.scatter(*zip(*pairs))
-            plt.show()
+            fig, ax = plt.subplots()
+            ax.scatter(*zip(*pairs))
+            ax.set_xlabel('Proporção de mulheres em ocupações (%)')
+            ax.set_ylabel('Força da associação do vetor de palavra\n de ocupação com o gênero feminino')
+
+            plt.axhline(0, color='black')
+            # plt.show()
+            plt.tight_layout()
+            plt.savefig("wefat.png", dpi=300)
 
             correlation_coefficient = np.corrcoef(*zip(*pairs))[0][1]
             print(f'\tPearson\'s correlation coefficient: {correlation_coefficient}')
