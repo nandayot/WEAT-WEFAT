@@ -11,7 +11,7 @@ Depois rode o comando com:
 
 python main.py --data_file_name DATA_FILE_NAME --embedded_data_file_name EMBEDDED_DATA_FILE_NAME --glove_file_name GLOVE_FILE_NAME --wefat_association_file_name WEFAT_ASSOCIATION_FILE_NAME --test TEST --iterations N --distribution_type DISTRIBUTION_TYPE
 
-where: <br>
+Onde: <br>
     DATA_FILE_NAME: nome dos arquivos de palavras-alvo/atributos. Neste exemplo: os arquivos data/weat_...json para rodar no teste WEAT ou data/wefat_1.json para rodar o teste WEFAT.<br>
     EMBEDDED_DATA_FILE_NAME: nome do arquivo onde é armazenado os embeddings das palavras dos testes. Informe um nome identificador, que o algoritmo irá criar caso não existir. (Neste caso, não é necessário criar à priori) <br>
     GLOVE_FILE_NAME: nome do arquivo txt do GloVe; obrigatório caso o arquivo de EMBEDDED_DATA_FILE_NAME não exista<br>

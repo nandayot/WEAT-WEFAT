@@ -1,6 +1,6 @@
 {
-    "target_1": ["atleta", "pescador", "jardineiro", "agropecuarista", "cientista", "economista", "médico", "chefe", "diretor", "pedreiro", "policial", "gerente", "piloto", "programador", "motorista"],
-    "target_2": ["cozinheira", "artista", "professora", "psicóloga", "enfermeira", "recepcionista", "esteticista", "diarista", "secretária", "cabelereira", "faxineira", "assistente", "balconista", "camareira", "aeromoça"],
+    "target_1": ["atletismo", "pesca", "mecânica", "comércio", "indústria","agropecuaria", "ciencia", "economia", "engenharia", "física", "medicina", "diretoria", "construção", "administração", "biologia","policia", "gerência", "aviação", "computação", "direito"],
+    "target_2": ["cozinha", "artes", "educação", "psicologia", "pedagogia","enfermagem", "assistência", "estética", "limpeza", "faxina", "jornalismo", "biblioteca", "gastronomia", "comunicação", "literatura", "sociologia", "antropologia", "nutrição", "fisioterapia", "música"],
     "attribute_1": ["masculino", "homem", "menino", "irmão", "ele", "dele", "deles", "filho"],
     "attribute_2": ["feminino", "mulher", "menina", "irmã", "ela", "dela", "delas", "filha"]
 }
